@@ -224,8 +224,8 @@ Response (Bad Request): <잘못된 형식 시>
     "resultData": {
         "message": "Failed to create user",
         "errors": {
-            "nickName": "닉네임은 특수문자를 제외한 2~10자리여야 합니다.",
-            "username": "아이디는 2~12자 이여야 합니다.",
+            "nickName": "닉네임은 특수문자를 제외한 5~12자리여야 합니다.",
+            "username": "아이디는 5~12자 이여야 합니다.",
             "password": "비밀번호는 필수 입력 값입니다."
         }
     }

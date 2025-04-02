@@ -10,6 +10,7 @@ import com.sideproject.userInfo.userInfo.data.dto.admins.LoginRequest
 import com.sideproject.userInfo.userInfo.data.entity.AdminsEntity
 import com.sideproject.userInfo.userInfo.jwt.JwtUtils
 import com.sideproject.userInfo.userInfo.repository.AdminsRepository
+import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import jakarta.servlet.http.HttpServletResponse
 import jakarta.validation.Validation
@@ -92,6 +93,14 @@ class AdminService(
             blacklistedTokens.add(token)
             return RestResponse.success(
                 mapOfParsing(SuccessMessage.LOGOUT_SUCCESS)
+            )
+        } catch (e: ExpiredJwtException) {
+            throw CustomBadRequestException(
+                RestResponse.badRequest(
+                    mapOfParsing(
+                        e.message ?: ErrorMessage.TOKEN_EXPIRED
+                    )
+                )
             )
         } catch (e: Exception) {
             throw CustomBadRequestException(

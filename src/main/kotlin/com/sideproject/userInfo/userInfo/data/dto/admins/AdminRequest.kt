@@ -6,13 +6,13 @@ import jakarta.validation.constraints.Size
 
 data class AdminRequest(
     @field :NotBlank(message = "아이디는 필수 입력 값입니다.")
-    @field :Size(min = 2, max = 12, message = "아이디는 2~12자 이여야 합니다.")
+    @field :Size(min = 5, max = 12, message = "아이디는 5~12자 이여야 합니다.")
     var username: String,
 
     @field :NotBlank(message = "닉네임은 필수 입력 값입니다.")
     @field :Pattern(
-        regexp = "^[ㄱ-ㅎ가-힣a-z0-9-_]{2,10}$",
-        message = "닉네임은 특수문자를 제외한 2~10자리여야 합니다."
+        regexp = "^[ㄱ-ㅎ가-힣a-z0-9-_]{5,10}$",
+        message = "닉네임은 특수문자를 제외한 5~12자리여야 합니다."
     )
     var nickName: String,
 
@@ -29,7 +29,7 @@ data class AdminRequest(
 
 data class LoginRequest(
     @field :NotBlank(message = "아이디는 필수 입력 값입니다.")
-    @field :Size(min = 2, max = 12, message = "아이디는 2~12자 이여야 합니다.")
+    @field :Size(min = 5, max = 12, message = "아이디는 5~12자 이여야 합니다.")
     var username: String,
 
     @field :NotBlank(message = "비밀번호는 필수 입력 값입니다.")
